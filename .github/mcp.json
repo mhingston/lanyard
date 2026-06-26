@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "atlassian": {
+      "type": "http",
+      "url": "https://mcp.atlassian.com/v1/mcp/authv2",
+      "tools": [
+        "*"
+      ]
+    },
+    "grafana": {
+      "type": "http",
+      "url": "https://mcp.grafana.com/mcp",
+      "headers": {
+        "X-Grafana-URL": "https://puregym.grafana.net/"
+      },
+      "tools": [
+        "*"
+      ]
+    },
+    "lean-ctx": {
+      "command": "lean-ctx",
+      "args": []
+    }
+  }
+}

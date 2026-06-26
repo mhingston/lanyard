@@ -1,0 +1,32 @@
+{
+  "name": "lanyard",
+  "version": "0.1.0",
+  "description": "Bootstrap Atlassian and Grafana Cloud MCP plus repo LSP setup for GitHub Copilot CLI and VS Code.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mark-hingston/lanyard"
+  },
+  "bin": {
+    "lanyard": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "prebuild": "node -e \"const f=require('fs');f.rmSync('dist/skills',{recursive:true,force:true});f.rmSync('dist/agents',{recursive:true,force:true});f.rmSync('dist/scripts',{recursive:true,force:true})\"",
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "node -e \"const f=require('fs');f.cpSync('src/skills','dist/skills',{recursive:true});f.cpSync('src/agents','dist/agents',{recursive:true});f.cpSync('src/scripts','dist/scripts',{recursive:true})\"",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "postinstall": "node -e \"if(!require('fs').existsSync('dist/index.js'))require('child_process').execSync('npm run build',{stdio:'inherit'})\"",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.2"
+  }
+}

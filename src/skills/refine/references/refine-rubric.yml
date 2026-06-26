@@ -1,0 +1,49 @@
+rubric:
+  name: Refine readiness
+  version: 1
+  threshold: 7
+  maxScore: 8
+  criteria:
+    - id: summary-specific
+      label: Specific, unambiguous summary
+      points: 1
+      passWhen: >
+        Names the concrete failure or change. Reject vague summaries like
+        `Fix bug`, `Improve X`, `Refactor Y`.
+    - id: description-rationale
+      label: Description with context and rationale
+      points: 1
+      passWhen: >
+        Current state, desired outcome, and why the work matters now are all
+        present.
+    - id: ac-present
+      label: Explicit acceptance criteria present
+      points: 2
+      passWhen: >
+        A visible `Acceptance Criteria`, `AC`, `Given/When/Then`, or
+        `Definition of Done` section exists.
+    - id: ac-testable
+      label: Acceptance criteria are testable
+      points: 1
+      passWhen: >
+        Each criterion has a measurable outcome a tester can verify
+        independently. Reject `it should work`, `improve performance` without
+        a target, `make it better`.
+    - id: component-identified
+      label: Component or code area identified
+      points: 1
+      passWhen: >
+        At least one Jira component is set, and the relevant service / code
+        area is named in the description.
+    - id: scope-bounded
+      label: Scope is bounded
+      points: 1
+      passWhen: >
+        One bounded change, not an open-ended cleanup. Push back if the user
+        wrote `refactor the entire service`.
+    - id: no-blockers
+      label: No unresolved blockers at time of work
+      points: 1
+      passWhen: >
+        No open dependency is still blocking implementation at the time the
+        ticket would be picked up.

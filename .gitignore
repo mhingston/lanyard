@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# macOS
+.DS_Store
+
+# lean-ctx runtime state (machine-local, never committed)
+.lean-ctx/
+
+# Lanyard's own bootstrapped output — this tool writes these into *target*
+# repos, not into its own source tree. If they ever appear here from a test,
+# ignore them rather than committing.
+.github/hooks/hooks.json
+.github/hooks/.gitignore
+.github/scripts/regenerate-instructions.mjs
+.github/instructions/self-learning.instructions.md
+.github/self-learning/
+.github/copilot-instructions.md
+
+# NOTE: dist/ is intentionally NOT ignored — it is shipped to the remote
+# so `npx github:mark-hingston/lanyard` skips the postinstall rebuild. If
+# you change src/, run `npm run build` (and the existing postinstall will
+# also handle it for fresh checkouts).
